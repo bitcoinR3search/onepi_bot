@@ -19,7 +19,7 @@ hoy = dt.strftime(dt.today(), '%d/%b/%Y')
 #El archivo estados.npy se creo con un array de un solo elemento:
 #el ultimo precio diario registrado 
 
-path1 = '/home/ghost/BitcoinResearch/Bots/Twitter-Bot/app/'
+path1 = '/home/ghost/twitterbot/bins/'
 
 if not os.path.exists(path1+'estados.npy'):
   url = 'http://api.coindesk.com/v1/bpi/currentprice.json'
@@ -49,8 +49,9 @@ np.save(path1+'estados.npy',aux)
 
 url1 = IP_nodo+'/api/blockchain/coins'
 r1 = requests.get(url1)
-a = float(r1.text)
-b = round(100*a/21_000_000,5)
+json_data = json.loads(r1.text)
+a = float(json_data['supply'])
+b = round(100*a/21_000_000,4)
 
 message += '\n➯ ₿tc emitido: '+str(round(a,5))+' ('+str(b)+'%)'
 

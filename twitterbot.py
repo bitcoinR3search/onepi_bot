@@ -118,9 +118,9 @@ if __name__ == "__main__":
    api = login(path=p_env)
    while True:
       try:
-         main(p1='/home/ghost/BitcoinResearch/Bots/Twitter-Bot/app/')
+         main(p1='/home/ghost/twitterbot/bins/')
       except KeyboardInterrupt:
          print('Exiting by user request.\n')
          sys.exit(0)
       finally:
-         sleep(300)
+         sleep(600)
